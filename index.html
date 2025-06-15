@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client Theme Viewer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .client-box {
+      padding: 2em;
+      border-radius: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="client-box" id="clientBox">
+    <h1 id="clientId">Loading...</h1>
+    <p>This page was styled based on your query parameters.</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const clientId = params.get("clientId") || "Unknown Client";
+    const primaryColor = params.get("primaryColor") || "#333333";
+    const secondaryColor = params.get("secondaryColor") || "#ffffff";
+
+    document.getElementById("clientId").textContent = `Client ID: ${clientId}`;
+    document.body.style.backgroundColor = secondaryColor;
+    document.getElementById("clientBox").style.backgroundColor = primaryColor;
+    document.getElementById("clientBox").style.color = secondaryColor;
+  </script>
+</body>
+</html>
